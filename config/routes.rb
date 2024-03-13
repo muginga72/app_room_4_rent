@@ -9,6 +9,13 @@ Rails.application.routes.draw do
         registrations: "users/registrations"
       }
 
+  # authenticated :user do
+  #   root to: 'rooms#show', as: :authenticated_root
+  # end
+  # authenticated :user do
+  #   root to: 'pages#home', as: :authenticated_root
+  # end
+
   root 'pages#home'
   get 'pages/users'
   get 'pages/admin'
