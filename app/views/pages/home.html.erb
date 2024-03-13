@@ -1,0 +1,29 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<h2>Users Links</h2>
+<% if user_signed_in? %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-danger" %>
+  <%= link_to "Edit Registration", edit_user_registration_path, class: "btn btn-outline-primary" %>
+
+<% elsif !admin_signed_in? %>
+  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-success" %>
+  <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-primary" %>
+<% end %>
+
+<% if admin_signed_in? %>
+<h2>Admin Links</h2>
+  <%= link_to "Sign_out", destroy_admin_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-danger" %>
+  <%= link_to "Edit Registration", edit_admin_registration_path, class: "btn btn-outline-success" %>
+<% elsif !user_signed_in? %>
+<h2>Admin Links</h2>
+  <%= link_to "Sign up", new_admin_registration_path, class: "btn btn-outline-success" %>
+  <%= link_to "Sign in", new_admin_session_path, class: "btn btn-outline-primary" %>
+<% end %>
+
+<h2>Pages Liks</h2>
+<%= link_to "Home", root_path %>
+<%= link_to "Users path", pages_users_path %>
+<%= link_to "Admin path", pages_admin_path %>
+
+<div style="margin-top: 5em"></div>
