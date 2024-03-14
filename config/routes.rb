@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rooms
   devise_for :admin, controllers: {
         sessions: 'admin/sessions',
         registrations: "admin/registrations"
@@ -15,8 +16,9 @@ Rails.application.routes.draw do
   # authenticated :user do
   #   root to: 'pages#home', as: :authenticated_root
   # end
-
-  root 'pages#home'
+  
+  root to: 'rooms#index'
+  get 'pages/home'
   get 'pages/users'
   get 'pages/admin'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
