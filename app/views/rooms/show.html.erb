@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div class= "container">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @room %>
+  <h1 id="new_room_detail" class="display-4 text-center text-muted">Room Details</h1>
 
-<div>
-  <%= link_to "Edit this room", edit_room_path(@room) %> |
-  <%= link_to "Back to rooms", rooms_path %>
+  <%= render @room %>
 
-  <%= button_to "Destroy this room", @room, method: :delete %>
+  <div style="display: flex">
+    <%= link_to "Edit", edit_room_path(@room), class: "btn btn-success" %> |
+    <%= link_to "Back", rooms_path, class: "btn btn-secondary" %>
+
+    <%= button_to "Delete", @room, method: :delete, class: "btn btn-danger mx-2" %>
+  </div>
 </div>
