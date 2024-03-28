@@ -1,54 +1,34 @@
 <div>
   <div class="container">
     <%= link_to "Home", root_path %>
-    <%= link_to "Users path", pages_users_path %>
-    <%= link_to "Admin path", pages_admin_path %>
+    <%= link_to "Users", pages_users_path %>
+    <%= link_to "Admin", pages_admin_path %> <!-- in the future may be will be commented -->
 
     <div style="margin-top: 5em"></div>
     
-    <h2>Users Links</h2>
-    <% if user_signed_in? %>
-      <h2 style="margin-top: 150px; margin-bottom: 50px">Welcome, <%= current_user.email %>!</h2>
-  
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-danger" %>
-    <%= link_to "Edit Registration", edit_user_registration_path, class: "btn btn-outline-primary" %>
-    <%= link_to "Rooms", class: "btn btn-outline-success" %>
-    <% else %>
+    <!-- welcome page -->
+    <div class="landing-page-image">
+      <div class="container-fluid">
+        <div class="row justify-content-md-center align-items-center">
+          <div class="col-12">
+            <h2 class="display-1 text-white text-center fw-bold mt-3">
+              Welcome to R4R App!
+            </h2>
+            <p class="lead text-center mb-5 d-flex justify-content-sm-center">
+              <span class="col-12"><strong>Find your perfect room, make it your own!</strong></span>
+            </p>
+            
+            <!-- rendering the registration session -->
+            <%= render partial: 'shared/registration' %>
 
-      <!-- welcome page -->
-      <section class="landing-page-image">
-        <div class="container-fluid">
-          <div class="row justify-content-md-center align-items-center">
-            <div class="col-12">
-              <h2 class="display-1 text-white text-center fw-bold mt-5">
-                Welcome to R4R App!
-              </h2>
-              <p class="lead text-center mb-5 d-flex justify-content-sm-center">
-                <span class="col-12 text-white">Find your perfect room, make it your own!</span>
-              </p>
-              
-              <div style="display: flex; gap: 10px;" class="justify-content-sm-center">
-                <div class="d-grid gap-2 d-sm-flex">
-                  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-success" %>
-                </div>
-
-                <div>
-                  <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-primary" %>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
-      </section> <!-- /welcome page -->
-
-    <% end %>
-  
-
-<!-- footer-->
-<footer class="bg-light text-lg-star fixed-bottom" style="background-color: gray; margin-top: 50px">
-  <div class="text-center p-3">
-    <p id="copyright" class="mb-2">© 2024 Room 4 Rent, all rights reserved.</p>
-    <p>Find me on GitHub: <a href="https://github.com/muginga72"><i class="fab fa-github"></i></a></p>
-    <p>Contact us: <a href="mailto:lmj.muginga@gmail.com"><i class="fas fa-envelope"></i></a></p>
+      </div>
+    </div> <!-- /welcome page -->
   </div>
-</footer>  <!-- footer-->
+</div> 
+
+<!-- rendering the footer -->
+<div class="fixed-bottom">
+  <%= render partial: 'shared/footer' %>
+</div>

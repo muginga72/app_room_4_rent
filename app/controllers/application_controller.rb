@@ -1,18 +1,18 @@
 class ApplicationController < ActionController::Base
   # before_action :authenticate_admin!
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   # before_action :redirect_sign_out_user
-  # before_action :redirect_signed_in_user
+  before_action :redirect_sign_in_user
   
-  # private
+  private
 
-  # def redirect_signed_in_admin
-  #   redirect_to authenticated_root_path if admin_signed_in?
-  # end
+  def redirect_signed_in_admin
+    redirect_to authenticated_root_path if admin_signed_in?
+  end
 
-  # def redirect_sign_out_user
-  #   redirect_to rooms_path if user_sign_out?
-  # end
+  def redirect_sign_in_user
+    redirect_to rooms_path if user_signed_in?
+  end
   helper_method :current_user
 
   def current_user

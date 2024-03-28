@@ -23,3 +23,7 @@ test:
 production:
   <<: *default
   database: storage/production.sqlite3
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
